@@ -1,4 +1,7 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<p appSampledirective>Start editing to see some magic happen :)</p>
+
+<!-- BUilt in directives -->
+<div [ngClass]="buttonClicked ? 'bg-primary' : 'bg-success'">
+  i am being checked with bgcolor
+</div>
