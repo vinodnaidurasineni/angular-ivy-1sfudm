@@ -5,3 +5,49 @@
 <div [ngClass]="buttonClicked ? 'bg-primary' : 'bg-success'">
   i am being checked with bgcolor
 </div>
+
+<div [ngStyle]="styles">i am with ngstyle</div>
+
+<input type="text" [(ngModel)]="myname" />
+
+<!-- structural directives -->
+<div *ngIf="buttonClicked">button value is true</div>
+<div *ngFor="let items of listOfData; let i = index">
+  index: {{ i }} id is {{ items.id }} name is {{ items.name }}
+
+  <ul [ngSwitch]="items.color">
+    <li *ngSwitchCase="'green'" style="background-color:green">
+      Hello {{ items.name }}
+    </li>
+    <li *ngSwitchCase="'red'" style="background-color:red">
+      Hello {{ items.name }}
+    </li>
+    <li *ngSwitchCase="'orange'" style="background-color:orange">
+      Hello {{ items.name }}
+    </li>
+    <li *ngSwitchDefault>Bye Bye</li>
+  </ul>
+</div>
+<div>i am done</div>
+<!-- filter based on color -->
+<div *ngFor="let items of listOfData | filterpipe: 'green'; let i = index">
+  index: {{ i }} id is {{ items.id }} name is {{ items.name }}
+
+  <ul [ngSwitch]="items.color">
+    <li *ngSwitchCase="'green'" style="background-color:green">
+      Hello {{ items.name }}
+    </li>
+    <li *ngSwitchCase="'red'" style="background-color:red">
+      Hello {{ items.name }}
+    </li>
+    <li *ngSwitchCase="'orange'" style="background-color:orange">
+      Hello {{ items.name }}
+    </li>
+    <li *ngSwitchDefault>Bye Bye</li>
+  </ul>
+</div>
+<button (click)="buttonClicked = !buttonClicked">displayChild</button>
+
+<div *ngIf="buttonClicked">
+  <app-childcomponent [message]="myname"></app-childcomponent>
+</div>
